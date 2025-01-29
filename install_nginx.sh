@@ -1,4 +1,12 @@
 #########################
+# PASSOS ANTERIORES
+##########################
+# Conectar na máquina atraǘes do ssh
+1) ssh usuario@192.168.96.181
+# Executar script - vai entrar no container 
+2)./install_alpine_docker.sh
+
+#########################
 # PASSO A PASSO INSTALAÇÃO NGINX
 ##########################
 # Atualização do sistema 
