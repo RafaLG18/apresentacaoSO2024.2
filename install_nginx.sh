@@ -1,10 +1,20 @@
 #########################
 # PASSOS ANTERIORES
 ##########################
+
+#####################################
+# Obs.: Executar somente essa parte somente se for para se conectar a minha máquina virtual.
+###################################
 # Conectar na máquina atraǘes do ssh
 1) ssh usuario@192.168.96.181
 # Executar script - vai entrar no container 
 2)./run_alpine_docker.sh
+
+#####################################
+# Obs.: Se estiver executando na máquina local, executar o seguinte comando
+###################################
+# Levantar docker com imagem alpine, expõe a porta 8080 da maquina local e container, e entra no container
+1) docker run -it alpine:latest --name alpine sh
 
 #########################
 # PASSO A PASSO INSTALAÇÃO NGINX
@@ -29,46 +39,19 @@
 
 ##########################
 # Cria arquivo de configuração nginx
-8) echo "user                            www;
-worker_processes                auto; # it will be determinate automatically by the number of core
-
-error_log                       /var/log/nginx/error.log warn;
-#pid                             /var/run/nginx/nginx.pid; # it permit you to use rc-service nginx reload|restart|stop|start
-
-events {
-    worker_connections          1024;
-}
-
-http {
-    include                     /etc/nginx/mime.types;
-    default_type                application/octet-stream;
-    sendfile                    on;
-    access_log                  /var/log/nginx/access.log;
-    keepalive_timeout           3000;
-    server {
-        listen                  80;
-        root                    /www;
-        index                   index.html index.htm;
-        server_name             localhost;
-        client_max_body_size    32m;
-        error_page              500 502 503 504  /50x.html;
-        location = /50x.html {
-              root              /var/lib/nginx/html;
-        }
-    }
-}" >> /etc/nginx/nginx.conf
+8) 	
+	8.0) apk add neovim
+	8.1) Ir para o a planilha e clicar no link "Arquivo" 
+	8.2) nvim /etc/nginx/nginx.conf
+	8.3) Para colar "ctrl" + "shift" + "v"
+	8.4) Para sair "esc" + ":x!"
 
 # Cria uma página simples html
-9) echo "<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>HTML5</title>
-</head>
-<body>
-    Server is online
-</body>
-</html>" >> /www/index.html
+9) 
+	9.1) Ir para o a planilha e clicar no link "arquivo html"
+	9.2) nvim /www/index.html
+	9.3) Para colar "ctrl" + "shift" + "v"
+	9.4) Para sair "esc" + ":x!"
 
 ##########################
 # Testa arquivo de configuração nginx
